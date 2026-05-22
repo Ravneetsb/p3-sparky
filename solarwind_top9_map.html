@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a9ad9389642435c16545939555aecf2b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 9999;
+    background-color: white;
+    padding: 10px 12px;
+    border: 2px solid #999;
+    border-radius: 8px;
+    font-size: 14px;
+    box-shadow: 0 0 5px gray;
+">
+<b>SolarWind Categories</b><br>
+<span style="color: orange; font-weight: bold;">●</span> Solar<br>
+<span style="color: blue; font-weight: bold;">●</span> Wind<br>
+<span style="color: green; font-weight: bold;">●</span> Solar + Wind<br>
+</div>
+    
+            <div class="folium-map" id="map_a9ad9389642435c16545939555aecf2b" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_a9ad9389642435c16545939555aecf2b = L.map(
+                "map_a9ad9389642435c16545939555aecf2b",
+                {
+                    center: [39.71388888888889, -98.76877777777777],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 4,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_54d9fe9d9c2ee26f8439877e608a06f6 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_54d9fe9d9c2ee26f8439877e608a06f6.addTo(map_a9ad9389642435c16545939555aecf2b);
+        
+    
+            var marker_d0f465a71a1aadc92faf7150456f9f44 = L.marker(
+                [32.956, -115.947],
+                {
+}
+            ).addTo(map_a9ad9389642435c16545939555aecf2b);
+        
+    
+            var div_icon_f919cda8ac68a7874fd7819ce763bd49 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        background-color: orange;\n        color: white;\n        border-radius: 50%;\n        width: 32px;\n        height: 32px;\n        text-align: center;\n        line-height: 32px;\n        font-weight: bold;\n        border: 2px solid white;\n        box-shadow: 0 0 5px gray;\n        font-size: 13px;\n    \"\u003e\n        S1\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+        
+    
+        var popup_de1fe993da43c848ca554fdeafbb2b21 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_1482559f101cd8a36909ffdde5e2391d = $(`<div id="html_1482559f101cd8a36909ffdde5e2391d" style="width: 100.0%; height: 100.0%;">     <b>Solar candidate #1</b><br>     Geohash: <b>9mve</b><br>     Latitude: 32.9560<br>     Longitude: -115.8670<br>     Category score: 100.00<br>     Solar score: 100.00<br>     Wind score: 6.54<br>     Combined score: 53.27<br>     Avg vegetation: 15.32<br>     Avg cloud cover: 9.37<br>     Avg daily precip: 0.003<br>     Avg wind speed: 3.986<br>     Avg wind power proxy: 164.238<br>     Max wind speed: 16.208<br>     Avg temp C: 18.48<br>     Points: 984     </div>`)[0];
+                popup_de1fe993da43c848ca554fdeafbb2b21.setContent(html_1482559f101cd8a36909ffdde5e2391d);
+            
+        
+
+        marker_d0f465a71a1aadc92faf7150456f9f44.bindPopup(popup_de1fe993da43c848ca554fdeafbb2b21)
+        ;
+
+        
+    
+    
+            marker_d0f465a71a1aadc92faf7150456f9f44.bindTooltip(
+                `<div>
+                     Solar: 9mve | score 100.00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d0f465a71a1aadc92faf7150456f9f44.setIcon(div_icon_f919cda8ac68a7874fd7819ce763bd49);
+            
+    
+            var marker_1a4e4fe1a3875b6ff0646e12bbab35b4 = L.marker(
+                [32.772, -115.88],
+                {
+}
+            ).addTo(map_a9ad9389642435c16545939555aecf2b);
+        
+    
+            var div_icon_98bd5f04528cd13fdee96795ab5307e3 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        background-color: orange;\n        color: white;\n        border-radius: 50%;\n        width: 32px;\n        height: 32px;\n        text-align: center;\n        line-height: 32px;\n        font-weight: bold;\n        border: 2px solid white;\n        box-shadow: 0 0 5px gray;\n        font-size: 13px;\n    \"\u003e\n        S2\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+        
+    
+        var popup_17c4b2b3571693a49ef669feaa504649 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_9bd8dd450a9feb839241e8a3735cf284 = $(`<div id="html_9bd8dd450a9feb839241e8a3735cf284" style="width: 100.0%; height: 100.0%;">     <b>Solar candidate #2</b><br>     Geohash: <b>9mvd</b><br>     Latitude: 32.7720<br>     Longitude: -115.8000<br>     Category score: 99.70<br>     Solar score: 99.70<br>     Wind score: 12.53<br>     Combined score: 56.11<br>     Avg vegetation: 15.59<br>     Avg cloud cover: 9.66<br>     Avg daily precip: 0.001<br>     Avg wind speed: 4.578<br>     Avg wind power proxy: 310.271<br>     Max wind speed: 18.808<br>     Avg temp C: 18.55<br>     Points: 656     </div>`)[0];
+                popup_17c4b2b3571693a49ef669feaa504649.setContent(html_9bd8dd450a9feb839241e8a3735cf284);
+            
+        
+
+        marker_1a4e4fe1a3875b6ff0646e12bbab35b4.bindPopup(popup_17c4b2b3571693a49ef669feaa504649)
+        ;
+
+        
+    
+    
+            marker_1a4e4fe1a3875b6ff0646e12bbab35b4.bindTooltip(
+                `<div>
+                     Solar: 9mvd | score 99.70
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1a4e4fe1a3875b6ff0646e12bbab35b4.setIcon(div_icon_98bd5f04528cd13fdee96795ab5307e3);
+            
+    
+            var marker_12b6252bc06971f2311525e17cdf779d = L.marker(
+                [30.84, -114.857],
+                {
+}
+            ).addTo(map_a9ad9389642435c16545939555aecf2b);
+        
+    
+            var div_icon_68c4ef028813f6eb6477201086d7f1e6 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        background-color: orange;\n        color: white;\n        border-radius: 50%;\n        width: 32px;\n        height: 32px;\n        text-align: center;\n        line-height: 32px;\n        font-weight: bold;\n        border: 2px solid white;\n        box-shadow: 0 0 5px gray;\n        font-size: 13px;\n    \"\u003e\n        S3\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+        
+    
+        var popup_941cf8313183480a0d237ea0131d957a = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_cb5c7bb1177a1b61d9a6582a61744f6f = $(`<div id="html_cb5c7bb1177a1b61d9a6582a61744f6f" style="width: 100.0%; height: 100.0%;">     <b>Solar candidate #3</b><br>     Geohash: <b>9mqr</b><br>     Latitude: 30.8400<br>     Longitude: -114.7770<br>     Category score: 99.67<br>     Solar score: 99.67<br>     Wind score: 5.52<br>     Combined score: 52.60<br>     Avg vegetation: 1.00<br>     Avg cloud cover: 9.43<br>     Avg daily precip: 0.242<br>     Avg wind speed: 3.982<br>     Avg wind power proxy: 139.307<br>     Max wind speed: 16.534<br>     Avg temp C: 20.14<br>     Points: 328     </div>`)[0];
+                popup_941cf8313183480a0d237ea0131d957a.setContent(html_cb5c7bb1177a1b61d9a6582a61744f6f);
+            
+        
+
+        marker_12b6252bc06971f2311525e17cdf779d.bindPopup(popup_941cf8313183480a0d237ea0131d957a)
+        ;
+
+        
+    
+    
+            marker_12b6252bc06971f2311525e17cdf779d.bindTooltip(
+                `<div>
+                     Solar: 9mqr | score 99.67
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_12b6252bc06971f2311525e17cdf779d.setIcon(div_icon_68c4ef028813f6eb6477201086d7f1e6);
+            
+    
+            var marker_a3fe4ed0988a00a24678a6dd71def927 = L.marker(
+                [42.097, -105.236],
+                {
+}
+            ).addTo(map_a9ad9389642435c16545939555aecf2b);
+        
+    
+            var div_icon_6d5415880c4a80f76339e7e01335e8a6 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        background-color: blue;\n        color: white;\n        border-radius: 50%;\n        width: 32px;\n        height: 32px;\n        text-align: center;\n        line-height: 32px;\n        font-weight: bold;\n        border: 2px solid white;\n        box-shadow: 0 0 5px gray;\n        font-size: 13px;\n    \"\u003e\n        W4\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+        
+    
+        var popup_415fdc3e121cd507084d93106f34d925 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_f945f80538c5d8ec30f68489c8bf8ef5 = $(`<div id="html_f945f80538c5d8ec30f68489c8bf8ef5" style="width: 100.0%; height: 100.0%;">     <b>Wind candidate #4</b><br>     Geohash: <b>9xmp</b><br>     Latitude: 42.0970<br>     Longitude: -105.3160<br>     Category score: 100.00<br>     Solar score: 84.47<br>     Wind score: 100.00<br>     Combined score: 92.24<br>     Avg vegetation: 22.89<br>     Avg cloud cover: 23.42<br>     Avg daily precip: 0.884<br>     Avg wind speed: 8.803<br>     Avg wind power proxy: 2444.358<br>     Max wind speed: 30.145<br>     Avg temp C: 6.01<br>     Points: 656     </div>`)[0];
+                popup_415fdc3e121cd507084d93106f34d925.setContent(html_f945f80538c5d8ec30f68489c8bf8ef5);
+            
+        
+
+        marker_a3fe4ed0988a00a24678a6dd71def927.bindPopup(popup_415fdc3e121cd507084d93106f34d925)
+        ;
+
+        
+    
+    
+            marker_a3fe4ed0988a00a24678a6dd71def927.bindTooltip(
+                `<div>
+                     Wind: 9xmp | score 100.00
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a3fe4ed0988a00a24678a6dd71def927.setIcon(div_icon_6d5415880c4a80f76339e7e01335e8a6);
+            
+    
+            var marker_f817484380066c59da92c6b6cb958bf2 = L.marker(
+                [46.86, -60.512],
+                {
+}
+            ).addTo(map_a9ad9389642435c16545939555aecf2b);
+        
+    
+            var div_icon_9f3c1320da66d3d83036025510a8adc1 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        background-color: blue;\n        color: white;\n        border-radius: 50%;\n        width: 32px;\n        height: 32px;\n        text-align: center;\n        line-height: 32px;\n        font-weight: bold;\n        border: 2px solid white;\n        box-shadow: 0 0 5px gray;\n        font-size: 13px;\n    \"\u003e\n        W5\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+        
+    
+        var popup_d5976729648392f3652d966710320d3c = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_c7f44c6679193b8abe13281ced9fb814 = $(`<div id="html_c7f44c6679193b8abe13281ced9fb814" style="width: 100.0%; height: 100.0%;">     <b>Wind candidate #5</b><br>     Geohash: <b>f8kf</b><br>     Latitude: 46.8600<br>     Longitude: -60.5920<br>     Category score: 99.19<br>     Solar score: 40.76<br>     Wind score: 99.19<br>     Combined score: 69.97<br>     Avg vegetation: 43.33<br>     Avg cloud cover: 62.22<br>     Avg daily precip: 4.077<br>     Avg wind speed: 10.095<br>     Avg wind power proxy: 2424.465<br>     Max wind speed: 33.301<br>     Avg temp C: 6.73<br>     Points: 492     </div>`)[0];
+                popup_d5976729648392f3652d966710320d3c.setContent(html_c7f44c6679193b8abe13281ced9fb814);
+            
+        
+
+        marker_f817484380066c59da92c6b6cb958bf2.bindPopup(popup_d5976729648392f3652d966710320d3c)
+        ;
+
+        
+    
+    
+            marker_f817484380066c59da92c6b6cb958bf2.bindTooltip(
+                `<div>
+                     Wind: f8kf | score 99.19
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f817484380066c59da92c6b6cb958bf2.setIcon(div_icon_9f3c1320da66d3d83036025510a8adc1);
+            
+    
+            var marker_eff747f46825102113ca19ef7160f5f9 = L.marker(
+                [46.667, -60.565000000000005],
+                {
+}
+            ).addTo(map_a9ad9389642435c16545939555aecf2b);
+        
+    
+            var div_icon_94ba7cbeab94b2500b8d62c4a7380a47 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        background-color: blue;\n        color: white;\n        border-radius: 50%;\n        width: 32px;\n        height: 32px;\n        text-align: center;\n        line-height: 32px;\n        font-weight: bold;\n        border: 2px solid white;\n        box-shadow: 0 0 5px gray;\n        font-size: 13px;\n    \"\u003e\n        W6\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+        
+    
+        var popup_487dc4e2f41e97e27eb47777b639b34b = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_93d0d1ab308ef930d30974752c5484a4 = $(`<div id="html_93d0d1ab308ef930d30974752c5484a4" style="width: 100.0%; height: 100.0%;">     <b>Wind candidate #6</b><br>     Geohash: <b>f8kc</b><br>     Latitude: 46.6670<br>     Longitude: -60.6450<br>     Category score: 97.33<br>     Solar score: 35.93<br>     Wind score: 97.33<br>     Combined score: 66.63<br>     Avg vegetation: 43.84<br>     Avg cloud cover: 65.17<br>     Avg daily precip: 5.654<br>     Avg wind speed: 10.100<br>     Avg wind power proxy: 2379.319<br>     Max wind speed: 32.601<br>     Avg temp C: 5.98<br>     Points: 820     </div>`)[0];
+                popup_487dc4e2f41e97e27eb47777b639b34b.setContent(html_93d0d1ab308ef930d30974752c5484a4);
+            
+        
+
+        marker_eff747f46825102113ca19ef7160f5f9.bindPopup(popup_487dc4e2f41e97e27eb47777b639b34b)
+        ;
+
+        
+    
+    
+            marker_eff747f46825102113ca19ef7160f5f9.bindTooltip(
+                `<div>
+                     Wind: f8kc | score 97.33
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_eff747f46825102113ca19ef7160f5f9.setIcon(div_icon_94ba7cbeab94b2500b8d62c4a7380a47);
+            
+    
+            var marker_7331c98e7548f30377589d8ff0148dbe = L.marker(
+                [42.177, -105.316],
+                {
+}
+            ).addTo(map_a9ad9389642435c16545939555aecf2b);
+        
+    
+            var div_icon_c4dc69c2e3f8dc357185918b8b06afe4 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        background-color: green;\n        color: white;\n        border-radius: 50%;\n        width: 32px;\n        height: 32px;\n        text-align: center;\n        line-height: 32px;\n        font-weight: bold;\n        border: 2px solid white;\n        box-shadow: 0 0 5px gray;\n        font-size: 13px;\n    \"\u003e\n        B7\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+        
+    
+        var popup_7fe184d2df1de0a8f237429a0d50e76e = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_3e77cd7e11e3053fa10840dfaf509eef = $(`<div id="html_3e77cd7e11e3053fa10840dfaf509eef" style="width: 100.0%; height: 100.0%;">     <b>Solar + Wind candidate #7</b><br>     Geohash: <b>9xmp</b><br>     Latitude: 42.0970<br>     Longitude: -105.3160<br>     Category score: 92.24<br>     Solar score: 84.47<br>     Wind score: 100.00<br>     Combined score: 92.24<br>     Avg vegetation: 22.89<br>     Avg cloud cover: 23.42<br>     Avg daily precip: 0.884<br>     Avg wind speed: 8.803<br>     Avg wind power proxy: 2444.358<br>     Max wind speed: 30.145<br>     Avg temp C: 6.01<br>     Points: 656     </div>`)[0];
+                popup_7fe184d2df1de0a8f237429a0d50e76e.setContent(html_3e77cd7e11e3053fa10840dfaf509eef);
+            
+        
+
+        marker_7331c98e7548f30377589d8ff0148dbe.bindPopup(popup_7fe184d2df1de0a8f237429a0d50e76e)
+        ;
+
+        
+    
+    
+            marker_7331c98e7548f30377589d8ff0148dbe.bindTooltip(
+                `<div>
+                     Solar + Wind: 9xmp | score 92.24
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7331c98e7548f30377589d8ff0148dbe.setIcon(div_icon_c4dc69c2e3f8dc357185918b8b06afe4);
+            
+    
+            var marker_aeffbc6a8018e85e199715b364ce8a47 = L.marker(
+                [41.986999999999995, -105.273],
+                {
+}
+            ).addTo(map_a9ad9389642435c16545939555aecf2b);
+        
+    
+            var div_icon_83dda4406548e33973f265ba23709c7e = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        background-color: green;\n        color: white;\n        border-radius: 50%;\n        width: 32px;\n        height: 32px;\n        text-align: center;\n        line-height: 32px;\n        font-weight: bold;\n        border: 2px solid white;\n        box-shadow: 0 0 5px gray;\n        font-size: 13px;\n    \"\u003e\n        B8\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+        
+    
+        var popup_9a3d04b1b0ddf4d51f0ef2fc3bc3af05 = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_68f1e06a4ee738054acdc1e03aae7e8c = $(`<div id="html_68f1e06a4ee738054acdc1e03aae7e8c" style="width: 100.0%; height: 100.0%;">     <b>Solar + Wind candidate #8</b><br>     Geohash: <b>9xmn</b><br>     Latitude: 41.9070<br>     Longitude: -105.2730<br>     Category score: 90.69<br>     Solar score: 85.23<br>     Wind score: 96.14<br>     Combined score: 90.69<br>     Avg vegetation: 19.52<br>     Avg cloud cover: 22.72<br>     Avg daily precip: 0.857<br>     Avg wind speed: 8.905<br>     Avg wind power proxy: 2350.160<br>     Max wind speed: 30.245<br>     Avg temp C: 6.32<br>     Points: 492     </div>`)[0];
+                popup_9a3d04b1b0ddf4d51f0ef2fc3bc3af05.setContent(html_68f1e06a4ee738054acdc1e03aae7e8c);
+            
+        
+
+        marker_aeffbc6a8018e85e199715b364ce8a47.bindPopup(popup_9a3d04b1b0ddf4d51f0ef2fc3bc3af05)
+        ;
+
+        
+    
+    
+            marker_aeffbc6a8018e85e199715b364ce8a47.bindTooltip(
+                `<div>
+                     Solar + Wind: 9xmn | score 90.69
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_aeffbc6a8018e85e199715b364ce8a47.setIcon(div_icon_83dda4406548e33973f265ba23709c7e);
+            
+    
+            var marker_608e07f65d16d6a447caaec1f7a48d04 = L.marker(
+                [41.309, -105.333],
+                {
+}
+            ).addTo(map_a9ad9389642435c16545939555aecf2b);
+        
+    
+            var div_icon_526576a9e2ffc82d107ac43908895ab1 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        background-color: green;\n        color: white;\n        border-radius: 50%;\n        width: 32px;\n        height: 32px;\n        text-align: center;\n        line-height: 32px;\n        font-weight: bold;\n        border: 2px solid white;\n        box-shadow: 0 0 5px gray;\n        font-size: 13px;\n    \"\u003e\n        B9\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+        
+    
+        var popup_1efdee3fd854366c775bea8b1592261b = L.popup({
+  "maxWidth": 400,
+});
+
+        
+            
+                var html_48bbf853f9403e2b7e6cab7fa9db4207 = $(`<div id="html_48bbf853f9403e2b7e6cab7fa9db4207" style="width: 100.0%; height: 100.0%;">     <b>Solar + Wind candidate #9</b><br>     Geohash: <b>9xm4</b><br>     Latitude: 41.2290<br>     Longitude: -105.3330<br>     Category score: 87.43<br>     Solar score: 84.41<br>     Wind score: 90.45<br>     Combined score: 87.43<br>     Avg vegetation: 22.40<br>     Avg cloud cover: 23.64<br>     Avg daily precip: 0.739<br>     Avg wind speed: 9.239<br>     Avg wind power proxy: 2211.469<br>     Max wind speed: 28.337<br>     Avg temp C: 4.17<br>     Points: 656     </div>`)[0];
+                popup_1efdee3fd854366c775bea8b1592261b.setContent(html_48bbf853f9403e2b7e6cab7fa9db4207);
+            
+        
+
+        marker_608e07f65d16d6a447caaec1f7a48d04.bindPopup(popup_1efdee3fd854366c775bea8b1592261b)
+        ;
+
+        
+    
+    
+            marker_608e07f65d16d6a447caaec1f7a48d04.bindTooltip(
+                `<div>
+                     Solar + Wind: 9xm4 | score 87.43
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_608e07f65d16d6a447caaec1f7a48d04.setIcon(div_icon_526576a9e2ffc82d107ac43908895ab1);
+            
+    
+            map_a9ad9389642435c16545939555aecf2b.fitBounds(
+                [[30.84, -115.867], [46.86, -60.592]],
+                {}
+            );
+        
+</script>
+</html>
